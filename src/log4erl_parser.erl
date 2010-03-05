@@ -472,7 +472,7 @@ yeccgoto_value(28, Cat, Ss, Stack, T, Ts, Tzr) ->
 yeccgoto_value(33=_S, Cat, Ss, Stack, T, Ts, Tzr) ->
  yeccpars2_34(_S, Cat, Ss, Stack, T, Ts, Tzr).
 
--compile({inline,yeccpars2_4_/1}).
+-compile({inline,{yeccpars2_4_,1}}).
 -file("log4erl_parser.yrl", 8).
 yeccpars2_4_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -480,7 +480,7 @@ yeccpars2_4_(__Stack0) ->
    [ __1 ]
   end | __Stack].
 
--compile({inline,yeccpars2_6_/1}).
+-compile({inline,{yeccpars2_6_,1}}).
 -file("log4erl_parser.yrl", 27).
 yeccpars2_6_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -488,7 +488,7 @@ yeccpars2_6_(__Stack0) ->
    unwrap ( __1 )
   end | __Stack].
 
--compile({inline,yeccpars2_7_/1}).
+-compile({inline,{yeccpars2_7_,1}}).
 -file("log4erl_parser.yrl", 26).
 yeccpars2_7_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -496,7 +496,7 @@ yeccpars2_7_(__Stack0) ->
    unwrap ( __1 )
   end | __Stack].
 
--compile({inline,yeccpars2_9_/1}).
+-compile({inline,{yeccpars2_9_,1}}).
 -file("log4erl_parser.yrl", 25).
 yeccpars2_9_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -504,7 +504,7 @@ yeccpars2_9_(__Stack0) ->
    unwrap ( __1 )
   end | __Stack].
 
--compile({inline,yeccpars2_15_/1}).
+-compile({inline,{yeccpars2_15_,1}}).
 -file("log4erl_parser.yrl", 15).
 yeccpars2_15_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -512,7 +512,7 @@ yeccpars2_15_(__Stack0) ->
    [ __1 ]
   end | __Stack].
 
--compile({inline,yeccpars2_16_/1}).
+-compile({inline,{yeccpars2_16_,1}}).
 -file("log4erl_parser.yrl", 16).
 yeccpars2_16_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
@@ -520,7 +520,7 @@ yeccpars2_16_(__Stack0) ->
    [ __1 ] ++ __2
   end | __Stack].
 
--compile({inline,yeccpars2_17_/1}).
+-compile({inline,{yeccpars2_17_,1}}).
 -file("log4erl_parser.yrl", 12).
 yeccpars2_17_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
@@ -528,7 +528,7 @@ yeccpars2_17_(__Stack0) ->
    { default_logger , __3 }
   end | __Stack].
 
--compile({inline,yeccpars2_21_/1}).
+-compile({inline,{yeccpars2_21_,1}}).
 -file("log4erl_parser.yrl", 20).
 yeccpars2_21_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
@@ -536,7 +536,7 @@ yeccpars2_21_(__Stack0) ->
    [ __1 ]
   end | __Stack].
 
--compile({inline,yeccpars2_23_/1}).
+-compile({inline,{yeccpars2_23_,1}}).
 -file("log4erl_parser.yrl", 21).
 yeccpars2_23_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
@@ -544,7 +544,7 @@ yeccpars2_23_(__Stack0) ->
    [ __1 ] ++ __3
   end | __Stack].
 
--compile({inline,yeccpars2_24_/1}).
+-compile({inline,{yeccpars2_24_,1}}).
 -file("log4erl_parser.yrl", 18).
 yeccpars2_24_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
@@ -552,7 +552,7 @@ yeccpars2_24_(__Stack0) ->
    { appender , __1 , __2 , __4 }
   end | __Stack].
 
--compile({inline,yeccpars2_27_/1}).
+-compile({inline,{yeccpars2_27_,1}}).
 -file("log4erl_parser.yrl", 13).
 yeccpars2_27_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
@@ -560,7 +560,7 @@ yeccpars2_27_(__Stack0) ->
    { default_logger , __4 }
   end | __Stack].
 
--compile({inline,yeccpars2_30_/1}).
+-compile({inline,{yeccpars2_30_,1}}).
 -file("log4erl_parser.yrl", 11).
 yeccpars2_30_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
@@ -568,7 +568,7 @@ yeccpars2_30_(__Stack0) ->
    { logger , __2 , __4 }
   end | __Stack].
 
--compile({inline,yeccpars2_31_/1}).
+-compile({inline,{yeccpars2_31_,1}}).
 -file("log4erl_parser.yrl", 9).
 yeccpars2_31_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
@@ -576,7 +576,7 @@ yeccpars2_31_(__Stack0) ->
    [ __1 ] ++ __2
   end | __Stack].
 
--compile({inline,yeccpars2_32_/1}).
+-compile({inline,{yeccpars2_32_,1}}).
 -file("log4erl_parser.yrl", 6).
 yeccpars2_32_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
@@ -584,7 +584,7 @@ yeccpars2_32_(__Stack0) ->
    [ __1 ] ++ __2
   end | __Stack].
 
--compile({inline,yeccpars2_34_/1}).
+-compile({inline,{yeccpars2_34_,1}}).
 -file("log4erl_parser.yrl", 23).
 yeccpars2_34_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,

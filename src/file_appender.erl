@@ -83,13 +83,16 @@ handle_event({log,LLog}, State) ->
     do_log(LLog, ResState),
     {ok, ResState}.
 
-
 handle_call({change_format, Format}, State) ->
     ?LOG2("Old State in file_appender is ~p~n",[State]),
     {ok, Tokens} = log_formatter:parse(Format),
     ?LOG2("Adding format of ~p~n",[Tokens]),
     State1 = State#file_appender{format=Tokens},
     {ok, ok, State1};
+handle_call({change_level, Level}, State) ->
+    State2 = State#file_appender{level = Level},
+    ?LOG2("Changed level to ~p~n",[Level]),
+    {ok, ok, State2};
 handle_call(_Request, State) ->
     Reply = ok,
     {ok, Reply, State}.
@@ -124,26 +127,18 @@ do_log(_Other, _State) ->
 rotate(#file_appender{fd = Fd, dir=Dir,  file_name=Fn, counter=Cntr, rotation=Rot, suffix=Suf, log_type=Ltype, level=Level, format=Format} = _S) ->
     file:close(Fd),
     ?LOG("Starting rotation~n"),
-    C = if
-	    Rot == 0 ->
-		0;
-	    Cntr >= Rot ->
-		1;
-	    true ->
-		Cntr+1
-	end,
+    rotate_file(Dir ++ "/" ++ Fn, Rot - 1, Suf),
     Src = Dir ++ "/" ++ Fn ++ "." ++ Suf,
-    Fname = case C of
-		0 ->
-		    Dir ++ "/" ++ Fn ++ "." ++ Suf;
-		_ ->
-		    Dir ++ "/" ++ Fn ++ "_" ++ integer_to_list(C) ++ "." ++ Suf
-	    end,
-    ?LOG2("Renaming file from ~p to ~p~n",[Src, Fname]),
-    file:rename(Src, Fname),
     {ok ,Fd2} = file:open(Src, ?FILE_OPTIONS_ROTATE),
-    State2 = #file_appender{dir = Dir, file_name = Fn, fd = Fd2, counter=C, log_type = Ltype, rotation = Rot, suffix=Suf, level=Level, format=Format},
+    State2 = #file_appender{dir = Dir, file_name = Fn, fd = Fd2, counter=Cntr, log_type = Ltype, rotation = Rot, suffix=Suf, level=Level, format=Format},
     {ok, State2}.
+
+rotate_file(FileBase, Index, Suffix) when Index > 0 ->
+    file:rename(FileBase ++ "_" ++ integer_to_list(Index) ++ "." ++ Suffix, 
+		FileBase ++ "_" ++ integer_to_list(Index + 1) ++ "." ++ Suffix),
+    rotate_file(FileBase, Index - 1, Suffix);
+rotate_file(FileBase, _Index, Suffix) ->
+    file:rename(FileBase ++ "." ++ Suffix, FileBase ++ "_1." ++ Suffix).
 
 rotate_daily(#file_appender{fd = Fd, dir=Dir,  file_name=Fn, counter=Cntr, rotation=Rot, suffix=Suf, log_type=Ltype, level=Level, format=Format} = _S, {Year, Month, Day}) ->
     file:close(Fd),
@@ -174,8 +169,6 @@ rotate_daily(#file_appender{fd = Fd, dir=Dir,  file_name=Fn, counter=Cntr, rotat
     {ok, Fd2} = file:open(Src, ?FILE_OPTIONS_ROTATE),
     State2 = #file_appender{dir = Dir, file_name = Fn, fd = Fd2, counter=Cntr, log_type = Ltype, rotation = Rot, suffix=Suf, level=Level, format=Format},
     {ok, State2}.
-
-
 
 % Check if the file needs to be rotated
 % ignore in case of if log type is set to time instead of size	    
