@@ -34,7 +34,7 @@ init({conf, Conf}) when is_list(Conf) ->
 	  end,
     init(list_to_tuple(Res));
 
-init({Dir, Fname, "daily", _, _, Suf, Level, Format}) ->
+init({Dir, Fname, "daily", undefined, undefined, Suf, Level, Format}) ->
     init({Dir, Fname, "daily", 0, 0, Suf, Level, Format});
 
 init({Dir, Fname, {Type, Max}, Rot, Suf, Level})->
