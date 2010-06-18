@@ -1,0 +1,3 @@
+ebin/*.beam
+src/log4erl_lex.erl
+src/log4erl_parser.erl
