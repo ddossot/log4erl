@@ -1,4 +1,4 @@
--file("/usr/lib/erlang/lib/parsetools-2.0/include/leexinc.hrl", 0).
+-file("/usr/local/lib/erlang/lib/parsetools-2.0.2/include/leexinc.hrl", 0).
 %% The source of this file is part of leex distribution, as such it
 %% has the same Copyright as the other files in the leex
 %% distribution. The Copyright is defined in the accompanying file
@@ -12,12 +12,12 @@
 -export([format_error/1]).
 
 %% User code. This is placed here to allow extra attributes.
--file("./log4erl_lex.xrl", 20).
+-file("./log4erl_lex.xrl", 19).
 
 strip(TokenChars,TokenLen) -> 
     lists:sublist(TokenChars, 2, TokenLen - 2).
 
--file("/usr/lib/erlang/lib/parsetools-2.0/include/leexinc.hrl", 14).
+-file("/usr/local/lib/erlang/lib/parsetools-2.0.2/include/leexinc.hrl", 14).
 
 format_error({illegal,S}) -> ["illegal characters ",io_lib:write_string(S)];
 format_error({user,S}) -> S.
@@ -410,21 +410,17 @@ yystate(15, [95|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(15, [93|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(15, [62|Ics], Line, Tlen, Action, Alen) ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(15, [60|Ics], Line, Tlen, Action, Alen) ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(15, [34|Ics], Line, Tlen, Action, Alen) ->
     yystate(19, Ics, Line, Tlen+1, Action, Alen);
 yystate(15, [32|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
+yystate(15, [33|Ics], Line, Tlen, Action, Alen) ->
+    yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 35, C =< 37 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 43 ->
+yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 60 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 45, C =< 58 ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 64, C =< 91 ->
+yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 62, C =< 91 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(15, [C|Ics], Line, Tlen, Action, Alen) when C >= 97, C =< 122 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
@@ -470,19 +466,15 @@ yystate(11, [95|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(11, [93|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(11, [62|Ics], Line, Tlen, Action, Alen) ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(11, [60|Ics], Line, Tlen, Action, Alen) ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(11, [32|Ics], Line, Tlen, Action, Alen) ->
+    yystate(15, Ics, Line, Tlen+1, Action, Alen);
+yystate(11, [33|Ics], Line, Tlen, Action, Alen) ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 35, C =< 37 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 43 ->
+yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 60 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 45, C =< 58 ->
-    yystate(15, Ics, Line, Tlen+1, Action, Alen);
-yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 64, C =< 91 ->
+yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 62, C =< 91 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
 yystate(11, [C|Ics], Line, Tlen, Action, Alen) when C >= 97, C =< 122 ->
     yystate(15, Ics, Line, Tlen+1, Action, Alen);
@@ -564,19 +556,15 @@ yystate(4, [95|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(4, [93|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(4, [62|Ics], Line, Tlen, Action, Alen) ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(4, [60|Ics], Line, Tlen, Action, Alen) ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(4, [32|Ics], Line, Tlen, Action, Alen) ->
+    yystate(0, Ics, Line, Tlen+1, Action, Alen);
+yystate(4, [33|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 35, C =< 37 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 43 ->
+yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 60 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 45, C =< 58 ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 64, C =< 91 ->
+yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 62, C =< 91 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(4, [C|Ics], Line, Tlen, Action, Alen) when C >= 97, C =< 122 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
@@ -612,21 +600,17 @@ yystate(0, [95|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(0, [93|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(0, [62|Ics], Line, Tlen, Action, Alen) ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(0, [60|Ics], Line, Tlen, Action, Alen) ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(0, [39|Ics], Line, Tlen, Action, Alen) ->
     yystate(3, Ics, Line, Tlen+1, Action, Alen);
 yystate(0, [32|Ics], Line, Tlen, Action, Alen) ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
+yystate(0, [33|Ics], Line, Tlen, Action, Alen) ->
+    yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 35, C =< 37 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 43 ->
+yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 40, C =< 60 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 45, C =< 58 ->
-    yystate(0, Ics, Line, Tlen+1, Action, Alen);
-yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 64, C =< 91 ->
+yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 62, C =< 91 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
 yystate(0, [C|Ics], Line, Tlen, Action, Alen) when C >= 97, C =< 122 ->
     yystate(0, Ics, Line, Tlen+1, Action, Alen);
@@ -641,67 +625,68 @@ yystate(S, Ics, Line, Tlen, Action, Alen) ->
 
 yyaction(0, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_0_(TokenChars, TokenLine);
+    yyaction_0(TokenChars, TokenLine);
 yyaction(1, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_1_(TokenChars, TokenLine);
+    yyaction_1(TokenChars, TokenLine);
 yyaction(2, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_2_(TokenChars, TokenLine);
+    yyaction_2(TokenChars, TokenLine);
 yyaction(3, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_3_(TokenChars, TokenLine);
+    yyaction_3(TokenChars, TokenLine);
 yyaction(4, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_4_(TokenChars, TokenLen, TokenLine);
+    yyaction_4(TokenChars, TokenLen, TokenLine);
 yyaction(5, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_5_(TokenChars, TokenLen, TokenLine);
+    yyaction_5(TokenChars, TokenLen, TokenLine);
 yyaction(6, TokenLen, YYtcs, TokenLine) ->
     TokenChars = yypre(YYtcs, TokenLen),
-    yy_6_(TokenChars, TokenLine);
+    yyaction_6(TokenChars, TokenLine);
 yyaction(7, _, _, _) ->
-    yy_7_();
+    yyaction_7();
 yyaction(_, _, _, _) -> error.
 
--compile({inline,yy_0_/2}).
+-compile({inline,yyaction_0/2}).
 -file("./log4erl_lex.xrl", 8).
-yy_0_(TokenChars, TokenLine) ->
-     { token , { loger , TokenLine , list_to_atom ( TokenChars ) } } .
+yyaction_0(TokenChars, TokenLine) ->
+     { token, { loger, TokenLine, list_to_atom (TokenChars) } } .
 
--compile({inline,yy_1_/2}).
+-compile({inline,yyaction_1/2}).
 -file("./log4erl_lex.xrl", 9).
-yy_1_(TokenChars, TokenLine) ->
-     { token , { default , TokenLine , list_to_atom ( TokenChars ) } } .
+yyaction_1(TokenChars, TokenLine) ->
+     { token, { default, TokenLine, list_to_atom (TokenChars) } } .
 
--compile({inline,yy_2_/2}).
+-compile({inline,yyaction_2/2}).
 -file("./log4erl_lex.xrl", 10).
-yy_2_(TokenChars, TokenLine) ->
-     { token , { integer , TokenLine , list_to_integer ( TokenChars ) } } .
+yyaction_2(TokenChars, TokenLine) ->
+     { token, { integer, TokenLine, list_to_integer (TokenChars) } } .
 
--compile({inline,yy_3_/2}).
+-compile({inline,yyaction_3/2}).
+-file("./log4erl_lex.xrl", 11).
+yyaction_3(TokenChars, TokenLine) ->
+     { token, { atom, TokenLine, list_to_atom (TokenChars) } } .
+
+-compile({inline,yyaction_4/3}).
 -file("./log4erl_lex.xrl", 12).
-yy_3_(TokenChars, TokenLine) ->
-     { token , { atom , TokenLine , list_to_atom ( TokenChars ) } } .
+yyaction_4(TokenChars, TokenLen, TokenLine) ->
+     { token, { val, TokenLine, strip (TokenChars, TokenLen) } } .
 
--compile({inline,yy_4_/3}).
+-compile({inline,yyaction_5/3}).
 -file("./log4erl_lex.xrl", 13).
-yy_4_(TokenChars, TokenLen, TokenLine) ->
-     { token , { val , TokenLine , strip ( TokenChars , TokenLen ) } } .
+yyaction_5(TokenChars, TokenLen, TokenLine) ->
+     { token, { val, TokenLine, strip (TokenChars, TokenLen) } } .
 
--compile({inline,yy_5_/3}).
+-compile({inline,yyaction_6/2}).
 -file("./log4erl_lex.xrl", 14).
-yy_5_(TokenChars, TokenLen, TokenLine) ->
-     { token , { val , TokenLine , strip ( TokenChars , TokenLen ) } } .
+yyaction_6(TokenChars, TokenLine) ->
+     { token, { list_to_atom (TokenChars), TokenLine } } .
 
--compile({inline,yy_6_/2}).
+-compile({inline,yyaction_7/0}).
 -file("./log4erl_lex.xrl", 15).
-yy_6_(TokenChars, TokenLine) ->
-     { token , { list_to_atom ( TokenChars ) , TokenLine } } .
-
--compile({inline,yy_7_/0}).
--file("./log4erl_lex.xrl", 16).
-yy_7_() ->
+yyaction_7() ->
      skip_token .
 
--file("/usr/lib/erlang/lib/parsetools-2.0/include/leexinc.hrl", 282).
+-file("/usr/local/lib/erlang/lib/parsetools-2.0.2/include/leexinc.hrl", 282).
+
