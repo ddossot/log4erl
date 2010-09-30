@@ -4,7 +4,7 @@ log4erl Manual:
 TOC:
 ====
 1. Features
-2. Installation
+2. Building
 3. Usage
 4. API
 5. Configuration
@@ -27,22 +27,9 @@ TOC:
 - Support for syslog 
 - Support for changing format and level of appender during run-time
 
-2. INSTALLATION:
+2. BUILDING:
 ================
-To compile & install log4erl, download source from google code's website
-(http://code.google.com/p/log4erl/) or  from svn:
-$> svn checkout http://log4erl.googlecode.com/svn/trunk/ log4erl
-
-or from github public repository (http://github.com/ahmednawras/log4erl/).
-
-$> cd log4erl
-$> make
-
-or you can run the below from erlang shell:
-
-$> cd src
-$> erl
-1> make:all([{outdir, "../ebin"}]).
+./rebar compile
 
 3. USAGE:
 =========
